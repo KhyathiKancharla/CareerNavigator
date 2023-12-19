@@ -1,8 +1,9 @@
 # CareerNavigator
 ## Functions
-- if the student want to change his/her domain there is a roadmap of what skills are required and how to study.
-- the student can attempt different types of quizes.
+- If the student want to change his/her domain there is a roadmap of what skills are required and how to study.
+- The student can attempt different types of quizes.
 - In the learner module the student can do a profile screening to know what job roles he can get with the skills he/she accquires.
+- The learner gets a detailed roadmap with the resources links that are free to access
 
 ### Admin
 - Create Admin account using command
@@ -51,16 +52,31 @@ py manage.py runserver
 http://127.0.0.1:8000/
 ```
 
+
 ## CHANGES REQUIRED FOR CONTACT US PAGE
 - In settins.py file, You have to give your email and password
+
 ```
+
 EMAIL_HOST_USER = 'youremail@gmail.com'
 EMAIL_HOST_PASSWORD = 'your email password'
 EMAIL_RECEIVING_USER = 'youremail@gmail.com'
 ```
+## Screenshots
+
+![index](https://github.com/KhyathiKancharla/CareerNavigator/assets/110332342/c8ffc4f0-c3cb-4654-b7df-247e1469fd29 )
+
+
+![domainchange](https://github.com/KhyathiKancharla/CareerNavigator/assets/110332342/484bff85-dfa5-449f-856c-87407dacd792)
+
+
+   
+
+![exams](https://github.com/KhyathiKancharla/CareerNavigator/assets/110332342/c8392e88-f358-41f5-bfc5-dc047ff1eb44)
 
 ## Drawbacks/LoopHoles
-- Admin/Teacher can add any number of questions to any course, But while adding course, admin provide question number.
+- Need to make the application responsive.
+- The user interface of the website is basic which should be improved.
 
 ## Team 
 - Khyathi Kancharla 
