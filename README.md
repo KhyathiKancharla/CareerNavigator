@@ -1,7 +1,8 @@
-#Roadmap and onlinequiz 
-
+# CareerNavigator
 ## Functions
-- if the student want to change his/her domain there is a roadmap of what skills are required and how to study
+- if the student want to change his/her domain there is a roadmap of what skills are required and how to study.
+- the student can attempt different types of quizes.
+- In the learner module the student can do a profile screening to know what job roles he can get with the skills he/she accquires.
 
 ### Admin
 - Create Admin account using command
@@ -60,3 +61,9 @@ EMAIL_RECEIVING_USER = 'youremail@gmail.com'
 
 ## Drawbacks/LoopHoles
 - Admin/Teacher can add any number of questions to any course, But while adding course, admin provide question number.
+
+## Team 
+- Khyathi Kancharla 
+- Salman Khan
+- Teja Sai
+- Pujitha Sayana
