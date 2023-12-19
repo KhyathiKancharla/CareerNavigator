@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Deep Learning</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c34319fc-b6e6-4521-b840-78ead70ba071" class="page sans"><header><h1 class="page-title">Deep Learning</h1><p class="page-description"></p></header><div class="page-body"><p id="5d933212-b013-490d-b1a4-c9b7f18c98bd" class="">
+</p><p id="a50fda01-467f-47f4-ba2c-84ac8e69b589" class="">
+</p><h2 id="3640580d-668a-4353-b7d1-ce955012b39b" class=""><mark class="highlight-gray_background"><strong><strong>Brush-Up Your Math skills                                                              </strong></strong></mark></h2><p id="da973e5f-c198-4ed4-a67c-57cb3d6280df" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="49176f26-c6b1-4a15-93cf-225d1e52492e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/P0qQdj"><strong>Probability &amp; Statistics</strong></a></mark><mark class="highlight-red">.</mark></li></ul><ul id="79fee328-4db0-4482-9f88-10902f5a5dd3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/9WB0K0"><strong>Linear Algebra</strong></a></mark><mark class="highlight-red"><strong>.</strong></mark></li></ul><ul id="c31f49bb-454d-4c07-aecf-d8d98f963a46" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/x9qKvx"><strong>Calculus</strong></a></mark><mark class="highlight-red"><strong>.</strong></mark></li></ul></div></p><p id="69d980d6-a7c1-49c7-b482-be1a5b48f3b7" class="">
+</p><p id="5c31dfc7-9a70-47cf-907f-1a9cbd783061" class="">
+</p><h2 id="1814e65d-26fc-4098-9796-1576651096dd" class=""><mark class="highlight-gray_background"><strong><strong>Learn Programming Language                                                      </strong></strong></mark></h2><p id="7eadfb41-f28c-46fc-a1e8-2b6074c962be" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="80638bbb-7ff8-4c5c-b154-34eff2bcdc5d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://cs50.harvard.edu/python/2022/">CS50 Python</a></strong></mark></li></ul><ul id="649ddbad-220a-48ab-9b10-29df2acb5a8f" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=Q5g6lYUn6Q4&amp;t=29s"><mark class="highlight-red">R</mark></a></li></ul><ul id="004827aa-a9c0-479a-8deb-34f55fc6bf07" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=8PopR3x-VMY"><mark class="highlight-red">C</mark></a></li></ul><ul id="b5c8b135-4eee-4a8d-b615-3e612ee6f020" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=hBh_CC5y8-s"><mark class="highlight-red">Java</mark></a></li></ul></div></p><p id="dbf02de0-b865-4653-886b-89b956a6a230" class="">
+</p><p id="4ddae4bf-9822-4e7e-9bb1-9f629845d481" class="">
+</p><h2 id="d577a3bb-3bf7-4c6a-a0aa-a717c7460a85" class=""><mark class="highlight-gray_background"><strong><strong>Learn Data Wrangling                                                                     </strong></strong></mark></h2><p id="50d68311-8592-4f85-8016-6a6283c68c54" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="5c5f0ed5-d974-4ce2-b2d0-a9036fb1182e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.w3schools.in/dbms/intro/"><em><strong>W3Schools</strong></em></a></mark></li></ul><ul id="d4abc26d-1797-4cea-8e3a-baca666d56cb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://imp.i115008.net/4e59RM"><strong>SQL for Data Analysis</strong></a></mark></li></ul><ul id="bd8d39f7-62ba-43f7-a38e-6385260593d3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://tidd.ly/3rbz7uz"><strong>SQL for Data Science</strong></a></mark></li></ul><ul id="3d2655bc-7d21-4602-9139-14b85fe69eea" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://click.linksynergy.com/deeplink?id=Vrr1tRSwXGM&amp;mid=39197&amp;murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fsql-for-real-world-data-analysis%2F"><strong>SQL for Data Analysis: Solving real-world problems with data</strong></a></mark></li></ul><ul id="b8fddf80-601f-413a-a9e5-c9299d955cbf" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.tutorialspoint.com/sql/index.htm"><strong>SQL Tutorial</strong></a></mark></li></ul></div></p><p id="d0239fa2-e9f7-4d57-921c-ec9779d7e476" class="">
+</p><p id="03df5469-0c84-4304-b476-deb6abe0239c" class="">
+</p><h2 id="338986e9-9683-4840-ba50-33a363f6a4eb" class=""><mark class="highlight-gray_background"><strong><strong>Learn Machine Learning Concepts                                                 </strong></strong></mark></h2><p id="2b078880-1cf5-4edf-bf0e-4edac3738223" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="b6950ee7-4823-4570-b3dc-019678ffe5d0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://imp.i115008.net/P22jX"><strong>Machine Learning by Georgia Tech</strong></a></mark></li></ul><ul id="7b5ad25c-82ec-4719-a99e-6e1e2c98ede1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://imp.i115008.net/e4Kbng"><strong>Introduction to Machine Learning Course</strong></a></mark></li></ul><ul id="a9249f21-1a15-4a76-8779-001461346a51" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/rn1vDD"><strong>Machine Learning for All by University of London</strong></a></mark></li></ul></div></p><p id="cb2c5a6f-f225-44c7-881c-6f2adce42b15" class="">
+</p><p id="2b353451-ab48-443d-8ff3-f08edc5f3e22" class="">
+</p><h2 id="143a6cbd-6fcf-42d9-a7d6-42a6302ce4c2" class=""><mark class="highlight-gray_background"><strong><strong>Learn Deep Learning Algorithms                                                    </strong></strong></mark></h2><p id="8ee452e3-ba11-474f-8edf-9d92dcdbd9ef" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="04016ff4-6e47-45c3-bd08-754145534003" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/WDPPNM"><strong>Deep Learning Specialization</strong></a></mark></li></ul><ul id="f2268cce-4f2c-46b4-a418-32f18e22ae75" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="http://imp.i115008.net/E3Mq2"><strong>Deep Learning</strong></a></mark></li></ul><ul id="c88a3d87-c6d2-4b24-b47f-dd23ac148b1b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://imp.i115008.net/e4r5XX"><strong>Intro to Deep Learning with PyTorch</strong></a></mark></li></ul><ul id="6541f5a8-a18a-4e4d-ae0e-087fddbffb9e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/2rBAEM"><strong>Generative Adversarial Networks (GANs) Specialization</strong></a></mark></li></ul><ul id="bf4b90bf-474e-4393-8733-5734a5be101e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://click.linksynergy.com/deeplink?id=Vrr1tRSwXGM&amp;mid=39197&amp;murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fdeep-learning-convolutional-neural-networks-theano-tensorflow%2F"><strong>Deep Learning: Convolutional Neural Networks in Python</strong></a></mark></li></ul><ul id="aa4c9b1c-20c8-45a2-8d3f-3183332f4c8b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/RyDkB2"><strong>Neural Networks and Deep Learning</strong></a></mark></li></ul></div></p><p id="02e6fc08-d7b0-4bc4-9ac5-c38f91459330" class="">
+</p><p id="9f17a543-5533-4f1e-8df7-9e4afd80a9c6" class="">
+</p><p id="7f0d1eb5-2275-480f-99c1-43bff6587813" class="">
+</p><h2 id="1d7e13ee-7e95-4315-916e-bd5830b7fa21" class=""><mark class="highlight-gray_background"><strong><strong>Learn Deep Learning Frameworks                                                  </strong></strong></mark></h2><p id="4efa8afe-386b-42d3-b711-6e488e8fa36b" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="916badef-2fd9-4b9f-97e5-5082dd4f13f7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://imp.i115008.net/e4r5XX"><strong>Intro to Deep Learning with PyTorch</strong></a></mark></li></ul><ul id="6a206d24-7e74-434a-a797-b81bf5b95a7a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/jWjvvb"><strong>Introduction to Deep Learning &amp; Neural Networks with Keras</strong></a></mark></li></ul><ul id="04a8b185-af81-41d5-8655-23b84471d7a1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://datacamp.pxf.io/jWOqKZ"><strong>Advanced Deep Learning with Keras</strong></a></mark></li></ul><ul id="9c7cc7b1-3e08-431c-aad4-449dabd0fd89" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://coursera.pxf.io/a1Z00q"><strong>TensorFlow 2 for Deep Learning Specialization</strong></a></mark></li></ul><ul id="95514606-62a9-46cd-98ef-a3adceedd196" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://datacamp.pxf.io/15Wv4a"><strong>Introduction to Deep Learning with PyTorch</strong></a></mark></li></ul></div></p></div></article></body></html>

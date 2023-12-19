@@ -1,0 +1,94 @@
+ {% block content %} {% load static %}
+
+<head>
+  <link
+    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    .jumbotron {
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .card {
+      border: none;
+    }
+
+    .card-title {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .btn-start {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+    }
+  </style>
+
+  <script>
+    function openFullSizeWindow(url) {
+      window.open(
+        url,
+        '_blank',
+        'resizable=yes,fullscreen=1,scrollbars=yes'
+      );
+    }
+  </script>
+</head>
+<br /><br />
+
+<div class="container my-4">
+  <div class="jumbotron">
+    <h3 class="text-info text-center">
+      Before you start the Exam, here are the rules
+    </h3>
+
+    <div class="row">
+      <div class="card border-info mx-4 my-4">
+        <div class="card-body text-info">
+          <h4 class="card-title">Exam Details:</h4>
+          <ul style="list-style: decimal">
+            <li>Exam Name: {{ course.course_name }}</li>
+            <li>Total Question: {{ total_questions }}</li>
+            <li>Total Marks: {{ total_marks }}</li>
+          </ul>
+
+          <h4 class="card-title">Rules:</h4>
+          <ul style="list-style: decimal">
+            <li>All questions are multiple choice questions.</li>
+            <li><span class="text-danger">Only one choice is correct.</span></li>
+            <li>Every question carries different marks.</li>
+            <li>Try to answer as quickly as you can.</li>
+            <li>If you press refresh or go back, a new question will be given.</li>
+            <li>Questions are displayed randomly for every user.</li>
+            <li>You will see your marks immediately after submitting answers.</li>
+          </ul>
+
+          <a
+            href="javascript:void(0);"
+            onclick="openFullSizeWindow('{% url 'start-exam' course.id %}');"
+            class="btn btn-info btn-start"
+          >
+            Let's Start
+          </a>
+        </div>
+        <div class="card-footer text-center">Best Of Luck</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br /><br /><br /><br /><br /><br />
+{% endblock content %}

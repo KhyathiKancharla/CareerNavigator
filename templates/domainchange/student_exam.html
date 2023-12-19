@@ -1,0 +1,61 @@
+{% extends 'student/studentbase.html' %} {% block content %} {%load static%}
+
+<head>
+  <link
+    href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+    .exam-card {
+      margin-bottom: 20px;
+
+      border: 1px solid #ccc; /* Add a border to the card */
+      border-radius: 5px; /* Add rounded corners to the card */
+      padding: 15px;
+    }
+  </style>
+</head>
+<br /><br />
+
+
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Courses</h6>
+    </div>
+
+  </div>
+  <br />
+  <br />
+  {% for t in courses %}
+  <div class="card exam-card">
+    <div class="card-body">
+      <h4 class="card-title">{{ t.course_name }}</h4>
+      <a class="btn btn-danger btn-xm" href="{% url 'take-exam' t.id %}">
+        Take Exam <span class="glyphicon glyphicon-circle-arrow-right"></span>
+      </a>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+
+<br /><br /><br /><br /><br /><br />
+{% endblock content %}

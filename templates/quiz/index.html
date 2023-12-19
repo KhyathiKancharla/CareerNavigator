@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<html lang="en" dir="ltr">
+  <style>
+    .jumbotron {
+      margin-bottom: 0px;
+    }
+  </style>
+  <body>
+    {% include "quiz/navbar.html" %}
+    <section id="hero" class="d-flex align-items-center">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1>A Career Map </h1> 
+            <h1>With better opportunities</h1>
+            <h2>When considering your career, start by assessing your skills, interests, and strengths. Define your goals and research industries and job roles that align with your aspirations. Enhance your skills, network, and tailor applications for job searches.
+            </h2>     </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="static/image/job-removebg-preview.png " class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+  
+    </section><!-- End Hero -->
+  <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-chat-text" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="https://salesiq.zoho.in/signaturesupport.ls?widgetcode=5f4a5642a7075c2007b46d5c4b347057d5627b6d5312dc8e7abeaad20fd1dff7d328f73033b3474b8dea2d774a94427d&e=7cf6b46546451e92e98237dec70ca7319c00e85babadd892b247d0e730c66f49">Test Your Skills</a></h4>
+              <p class="description">Our comprehnsice assessments are designed to help you gauge your abilities and identify areas for improvement. Whether you're looking to enhance your professional expertise ot simply challege yourself</p>
+         <br>   </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-cash-stack" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="https://salesiq.zoho.in/signaturesupport.ls?widgetcode=5f4a5642a7075c2007b46d5c4b347057d5627b6d5312dc8e7abeaad20fd1dff7d328f73033b3474b8dea2d774a94427d&e=7cf6b46546451e92e98237dec70ca7319c00e85babadd892b247d0e730c66f49">Domain Change</a></h4>
+              <p class="description">Transitioning careers or exploring new technoloies get roadmap from multiple resources and enhance your skills in the interested domain   </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-calendar4-week" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="https://salesiq.zoho.in/signaturesupport.ls?widgetcode=5f4a5642a7075c2007b46d5c4b347057d5627b6d5312dc8e7abeaad20fd1dff7d328f73033b3474b8dea2d774a94427d&e=7cf6b46546451e92e98237dec70ca7319c00e85babadd892b247d0e730c66f49">Job Recommendations</a></h4>
+              <p class="description">Get job recommendations based on your current skills from multiple job searching platforms which helps you to get better opportunities</p>
+            </div>
+          </div>
+         
+
+         
+
+
+          
+         
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    
+
+
+    {% include "quiz/footer.html" %}
+  </body>
+</html>

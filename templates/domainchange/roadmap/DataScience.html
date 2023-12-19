@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Data Science</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7fe7b9ac-ef8b-4836-95a1-34c1d539f679" class="page sans"><header><h1 class="page-title">Data Science</h1><p class="page-description"></p></header><div class="page-body"><p id="7228c2d8-3d78-448f-98cf-c723067cdd29" class="">
+</p><h2 id="63caf8a5-08ca-48b0-8ecd-2a195a138e25" class=""><mark class="highlight-gray_background"> Mathematics                                                                              </mark></h2><p id="fd73e227-a095-4143-90bc-a560a58ff425" class=""><em><strong>Links:</strong></em></p><ul id="d1981bda-957c-4bd5-8a92-74bab62f26de" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.coursera.org/programs/kl-university-student-program-83ts9/learn/machine-learning-linear-algebra">Linear Algebra</a></mark></li></ul><ul id="fa44c71d-5d82-4fc4-ae25-0fd4d85177af" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=LZzq1zSL1bs">Analytic Geomentry</a></mark></li></ul><ul id="4e1f0ddb-d659-4719-a78f-20540eaae450" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=BGlEv2CTfeg"><mark class="highlight-red">Matrix</mark></a></li></ul><ul id="0d3dff12-881d-486b-9431-6446665c4b43" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=qUseabHb6Vk&amp;list=PLkZjai-2JcxnYmkg6fpzz4WFumGVl7MOa"><mark class="highlight-red">Vector Calculus</mark></a></li></ul><ul id="897b68ec-978a-481b-ad0d-ffafcd1b0af8" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=4Xokcy8jeoI"><mark class="highlight-red">Optimization</mark></a></li></ul><ul id="200e222a-3319-4e89-a85a-7115e835eb43" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=NUXdtN1W1FE"><mark class="highlight-red">Regression</mark></a></li></ul><ul id="27a29e15-aa44-43b5-bdc1-571759fa188a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">Dimensionality Reduction</mark></li></ul><ul id="4634bfe4-e8df-4f36-b51c-ed26716980a0" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=VLKEj9EN2ew"><mark class="highlight-red">Classification</mark></a></li></ul><p id="bd06ca73-d6f5-4269-a1db-4d5f1969c52a" class="">
+</p><h2 id="402b3890-a1f8-4892-a284-1294ae2c5594" class=""><mark class="highlight-gray_background">Probability                                                                                   </mark></h2><p id="1928cf51-9f82-4ea0-88ec-16a1cdee7fb1" class=""><em><strong>Links:</strong></em></p><ul id="216df6e4-141e-4f20-9224-4e56b8f32346" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=CfZa1daLjwo&amp;list=PLaFfQroTgZnzbfK-Rie19FdV6diehETQy">Distributions</a></mark></li></ul><ul id="5d23ba88-7417-492f-add1-be764b1d17ee" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=WsnBNjXP0CM&amp;list=PLaFfQroTgZnxtnfht3BzBHVfxodX9AR9F">Introduction to Probability</a></mark></li></ul><ul id="0c46961f-d195-4a5d-a476-78bb06f9bb95" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=3v9w79NhsfI&amp;list=PLU5aQXLWR3_xDN0M2ZeZ_zHIia0e42_3O">Random Variables</a></mark></li></ul><ul id="1d82ff93-6f0f-4e8c-a4a6-c419511da7b3" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=CfZa1daLjwo&amp;list=PLaFfQroTgZnzbfK-Rie19FdV6diehETQy"><mark class="highlight-red">Joint Probability Distribution</mark></a></li></ul><p id="2d696468-ae37-462f-ab2c-30585f851ea7" class="">
+</p><h2 id="f1c7c076-3de1-4d6d-b210-5a0f2d77a0c2" class=""><mark class="highlight-gray_background">Statics                                                                                            </mark></h2><p id="3e59d0f5-8e1f-4f31-ae21-56cbfa994fa7" class=""><em><strong>links:</strong></em><div class="indented"><ul id="b6297991-61cf-4669-bd59-7ddd596c4a75" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=XDqTDEZQZp4"><mark class="highlight-red">Introduction to Statics</mark></a></li></ul><ul id="05e52337-d203-4ea5-9b64-967199d5613f" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=txNvZ3Zndak"><mark class="highlight-red">Data Discription </mark></a></li></ul><ul id="964c0c35-c345-445c-8c47-c6bdb92eeb6a" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=KLAEwukvuZs"><mark class="highlight-red">Random Samples</mark></a></li></ul><ul id="beab267d-2237-46df-976f-a870178807ea" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=z0Ry_3_qhDw"><mark class="highlight-red">Sampling Distribution</mark></a></li></ul><ul id="b22112cb-f334-4ba5-8d8e-f2f2a3163857" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=6KBIWfGYkd8"><mark class="highlight-red">Parameter Estimation</mark></a></li></ul><ul id="dfa06230-0d5a-4e74-8db4-d83bfb0b7685" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=U5vt3_dfKys"><mark class="highlight-red">Hypothesis Testing</mark></a></li></ul><ul id="287c71af-858a-4059-af4e-3cba5fedf4f4" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=r1ueoHA_KCQ"><mark class="highlight-red">ANOVA</mark></a></li></ul><ul id="3e3d70b0-6a6d-4cb2-afd2-4e2a06695156" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=InJEyTsJGq0&amp;list=PLUmsPWeo8j4UuvW7uB_rpDk0hd2ihNOST"><mark class="highlight-red">Reliability engineering</mark></a></li></ul><ul id="1d133e6d-3c6c-44b9-9e02-08c43bb69747" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=yK_5Dnzv31k&amp;list=PLTDbRVt9ixKRO0T0qmP43IyDrbh1i_5kW"><mark class="highlight-red">Stochastic process</mark></a></li></ul><ul id="0220cc4c-e66c-4277-abbd-02a02691005b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=7a1rhw75jD0"><mark class="highlight-red">Computer Simulation</mark></a></li></ul><ul id="afa87f18-b535-41be-b3ae-6eeacab5df88" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=KSOvTHNEtig&amp;list=PLW-oQRxLODMcYEFXP4eg5EXBl-0hsTSe1"><mark class="highlight-red">Design of Experiments</mark></a></li></ul><ul id="e6069ea6-ca50-421d-b7f0-48507619900c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=NUXdtN1W1FE&amp;t=3s"><mark class="highlight-red">Simple Linear Regression</mark></a></li></ul><ul id="760344dc-b869-4fd5-b555-f09def88f5f2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=PEfQCv9nvSo"><mark class="highlight-red">Correlation</mark></a></li></ul><ul id="46976832-92d6-4fdb-859c-99ff931c3b72" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=EkAQAi3a4js"><mark class="highlight-red">Multiple Regression</mark></a></li></ul><ul id="1ca2364d-8327-4250-b3f7-543e7640633d" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=q56W-9kP--I"><mark class="highlight-red">Parametric and Non parametric tests</mark></a></li></ul><ul id="4f1133be-9549-4007-99e6-3969b211f8f2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=FauX67-Gyn8&amp;list=PL_hiZmDUXdGuG69nftwrsGvEBbY4LvSO_"><mark class="highlight-red">Statistical Quality Control</mark></a></li></ul><ul id="47a5a7a1-00d8-4900-b35c-5616c38fb01c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=APOGvq7P2gY&amp;list=PL9Hl4pk2FsvWNjrgm5xR47x70nNxaCmGI"><mark class="highlight-red">Graphs</mark></a></li></ul><p id="a9675931-6811-4b57-a457-000590a70440" class="">
+</p><h2 id="b354cd1b-cd75-4af3-8566-40c0ea9567cd" class=""><mark class="highlight-gray_background">Python Programming and Packages                                                            </mark></h2><p id="7a18f080-5dff-4d88-81bd-b11b5167f3a4" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="2743c023-088b-465b-8a51-f8f4f3adfc86" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://cs50.harvard.edu/python/2022/">CS50 Python</a></strong></mark></li></ul><ul id="d431ac7a-12d0-412c-8a55-9878bbcd7a01" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=FniLzpaSFGk"><mark class="highlight-red">Pandas and Numpy</mark></a></li></ul></div></p><p id="db29fa93-6ca4-4075-a24c-2fa3ec5f270b" class="">
+</p><h2 id="60cf5ce6-7402-4ddf-b5a0-e0366c1efec7" class=""><mark class="highlight-gray_background">Database                                                                                                        </mark></h2><p id="046f66c3-afb1-4d64-9268-b591a3f8e235" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="9042f9e9-e73a-4e8a-9af8-9e84e889a2dc" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=a-hFbr-4VQQ&amp;list=PLavw5C92dz9Ef4E-1Zi9KfCTXS_IN8gXZ"><mark class="highlight-red">SQL</mark></a></li></ul><ul id="e3347f8a-8b64-4317-b378-fa0568b52a23" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=8eJJe4Slnik"><mark class="highlight-red">MongoDB</mark></a></li></ul><ul id="f62d2914-a874-43db-8aaf-5529eb5513fe" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=_V8eKsto3Ug"><mark class="highlight-red">R Basic</mark></a></li></ul><ul id="5ed35c83-4724-40c7-999b-996360d675dd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=27zCOiIWwhE">Dplr</a></mark></li></ul><ul id="9a82c6d7-95e9-42d7-889b-4a696e98857d" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=l8SW38FLTwg"><mark class="highlight-red">Ggplot2</mark></a></li></ul><ul id="9ebfd00e-1865-4f3a-98f9-e3078351a4f7" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=xrrWLKRfZWY&amp;list=PLu6UwBFCnlEc7m2aK-AGfLLM-auJ5K3i5"><mark class="highlight-red">Tidyr</mark></a></li></ul></div></p><p id="e0bbf387-462e-429e-aab9-ee05d2479c67" class="">
+</p><h2 id="2d94781d-d364-4c8e-b315-90e20819c63f" class=""><mark class="highlight-gray_background">Machine learning                                                                                          </mark></h2><p id="2e72c0dd-e2cf-4e03-b332-802679c96526" class=""><em><strong>Links:</strong></em></p><ul id="755a2d77-0821-40a1-9dea-a1ef9dd54d9e" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=T3PsRW6wZSY&amp;list=PLIg1dOXc_acbdJo-AE5RXpIM_rvwrerwR"><mark class="highlight-red">Introduction to  Machine Learning</mark></a></li></ul><ul id="f734955b-0d8f-4cef-b436-3f3edb8a8f16" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=i_LwzRVP7bg"><mark class="highlight-red">Intermediate stage</mark></a></li></ul><p id="cf4c0856-9646-4b14-8e54-0943df08e644" class="">
+</p><p id="981bd503-c980-47db-92aa-4dc621d5a5a3" class="">
+</p><h2 id="3654d313-bb4d-40a1-81c6-c4259d1e0eca" class=""><mark class="highlight-gray_background">Deep Learning                                                                                              </mark></h2><p id="ea329929-b03e-447c-afd3-7f1db015fb73" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="72db8905-245b-4551-8e9f-728adb7c6062" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=WtUfElRD3rU"><mark class="highlight-red">Artificial neural Network</mark></a></li></ul><ul id="461ff3b1-4da2-47cd-802e-5ea08d258555" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=E5Z7FQp7AQQ&amp;list=PLuhqtP7jdD8CD6rOWy20INGM44kULvrHu"><mark class="highlight-red">Convolutional Neural Network</mark></a></li></ul><ul id="1c4aaeb3-2c54-4a76-9653-5e6259417dea" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=lWPkNkShNbo&amp;list=PLuhqtP7jdD8ARBnzj8SZwNFhwWT89fAFr"><mark class="highlight-red">Recurrent neural Networks </mark></a></li></ul><ul id="22cca29a-5361-4e14-b7b9-1bff7f484600" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=6M5VXKLf4D4"><mark class="highlight-red">Deep neural Networks</mark></a></li></ul><ul id="27afc633-ace1-4866-b38a-76391439cc74" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=FpDsDn-fBKA">Stochastic Gradient descent</a></mark></li></ul><ul id="bb11ff26-c448-46d5-a496-3aa3854e4a3c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=W-0-u6XVbE4"><mark class="highlight-red">Over Fliting and Under Flitting</mark></a></li></ul><ul id="0b3ddad0-697a-4ca1-8fd3-097690b8289d" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=wJ60luXn5Ns"><mark class="highlight-red">Dropout Batch Normalisation</mark></a></li></ul><ul id="1cdfad45-94ec-4c30-a77a-39798fd2a8a2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=KCuxh9F7B9c"><mark class="highlight-red">Binary Classification</mark></a></li></ul><p id="3fe7a48e-f715-4b98-80b3-79d558891c11" class="">
+</p><p id="6bcf4e3c-0214-4279-8e9e-789ded914c51" class="">
+</p></div></p><h2 id="83e8c3b0-b7a7-433e-b1e7-0a8fd68f56f1" class=""><mark class="highlight-gray_background">Feature Engineering                                                                                     </mark></h2><p id="65a223c9-7c94-40a9-8992-f35e28b45585" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="07371708-4354-455c-bd4d-842ce926f9cd" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=PWhK5gePJ_g"><mark class="highlight-red">Base line Modal</mark></a></li></ul><ul id="75a89a0c-dc81-48d7-b7ee-b47534225822" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=w2GglmYHfmM"><mark class="highlight-red">Categorical Encoding</mark></a></li></ul><ul id="2102bc97-25cd-45cb-b3b3-834d9f89f465" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=sluoVhT0ehg&amp;list=PLKnIA16_RmvYXWH_E6PuVLLHHTWXwwDN7">Feature Generation</a></mark></li></ul><ul id="ee193aa3-7611-4073-8770-8305b96d42e0" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=5bHpPQ6_OU4"><mark class="highlight-red">Feature Selection</mark></a></li></ul><p id="52b5a9c7-6ed9-443f-a4df-812515643207" class="">
+</p></div></p><h2 id="85351a46-7d02-417f-b473-4c6b04ea614f" class=""><mark class="highlight-gray_background">Natural Language Processing                                                                  </mark></h2><p id="9bfd51bd-3295-441f-b97a-7ced463b33d0" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="b30ba065-40d4-4011-b2e7-d952db96e019" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=60pqgfT5tZM">Text classification</a></mark></li></ul><ul id="39599b55-2163-4648-806c-74bc41aaa5d2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=TtKF996oEl8"><mark class="highlight-red">Work Vectors</mark></a></li></ul></div></p><p id="fb62e09f-f21d-4748-9003-2508761fccc3" class="">
+</p><h2 id="b706098b-f7ed-4a22-a49e-6bdffc105b83" class=""><mark class="highlight-gray_background">Data Visualization Tools                                                                           </mark></h2><p id="320c836d-3455-42bd-b6ca-d49715489f5d" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="6ec2355c-28ad-4780-ac9f-c812518d05c2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=tOQbqhS-6hs&amp;list=PLRx7SqpZ_xmDPTxkj_cejiZWDDDCRn7t1"><mark class="highlight-red">Excel VBA Tools</mark></a></li></ul><ul id="e4cf54c2-1aa7-4a7d-99be-5e9b0acd9db0" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=7EVrtPlVtpc"><mark class="highlight-red">BI(Business Intelligence</mark></a></li></ul></div></p><p id="c449f837-1d56-4eac-acd3-95f13deb0de5" class="">
+</p></div></p></div></article></body></html>

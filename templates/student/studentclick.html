@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Career Navigator- Skill quiz</title>
+
+  <style media="screen">
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+     
+    }
+
+    .jumbotron {
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+      background-color: #ebf7fc; /* Pale color #EBF7FC for the dashboard */
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .jumbotron h1 { 
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 1.25em;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      padding: 10px 25px;
+      font-size: 1.2em;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #d0ecf9;
+    }
+
+    .jumbotron hr {
+      width: 50px;
+      border-width: 2px;
+      margin: 20px auto;
+      border-color: #343a40;
+    }
+
+    /* Positioning the image at the bottom right corner */
+    .bottom-right-image {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body style="background-color: #d0ecf9">
+
+  {% include "quiz/navbar.html" %}
+
+  <div class="container" >
+    <div class="jumbotron">
+      <h1 class="display-4">Hello,Learner</h1>
+      <p class="lead">Welcome to Online Quiz</p>
+      <hr class="my-4">
+      <p>You can access various features after Login.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="studentlogin" role="button">Login</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Adding the image at the bottom right corner -->
+
+
+  {% include "quiz/footer.html" %}
+
+</body>
+
+</html>

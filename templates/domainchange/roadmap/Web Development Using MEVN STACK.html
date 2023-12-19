@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Web Development Using MEVN STACK</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="726f3e9c-e061-4de8-9959-f2026482ec44" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1687603863378-0761c86232bc?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><h1 class="page-title">Web Development Using MEVN STACK</h1><p class="page-description"></p></header><div class="page-body"><h1 id="c76c053c-41f5-4500-a465-205fd6c481ba" class="">Track:</h1><h2 id="f8fe8d38-d099-4d66-9665-14971736169c" class="block-color-gray_background">Package Managers </h2><p id="45bfdc50-29a7-4fb8-808e-235bafceba0b" class=""><strong><em>Links : </em></strong></p><ul id="bdefb8e7-de2f-456c-8fb2-47897d81472b" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=jHDhaSSKmB0">NPM</a></mark></strong></li></ul><ul id="62892be1-a959-442b-b593-07f0a74bd9b4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://www.youtube.com/watch?v=jHDhaSSKmB0">Yarn</a></strong></mark></li></ul><p id="ada22ac9-5eec-4ad7-b0e7-ff855f6e9f6f" class=""><em>*Choose one Package Manager</em></p><p id="5c6de7e2-8ddf-48da-8c85-0f1d34456b73" class="">
+</p><h2 id="223d1d8f-3157-4431-aeeb-60178f27d894" class="block-color-gray_background">VueJS - JavaScript Framework</h2><p id="17bf35e1-d45e-4a83-b50e-24e3e8478fbf" class=""><strong><em>Links : </em></strong></p><ul id="9654943f-b188-46a5-90be-b8df1a0315c9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/FXpIoQ_rT_c">VueJS Crash Course</a></strong></mark></li></ul><ul id="2201bf75-79ae-4437-808d-bb86927b4c5b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtube.com/playlist?list=PLC3y8-rFHvwgeQIfSDtEGVvvSEPDkL_1f">VueJS Full Playlist</a></strong></mark></li></ul><ul id="bc6b6e33-3a27-40bd-9a04-40d557fee66a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/qZXt1Aom3Cs">VueJS Course</a></strong></mark></li></ul><p id="df7f0728-c276-464f-9272-85f864e8d346" class=""><em>*Choose one, and you’re good to go.</em></p><p id="08a379cd-ec70-4e8c-9aeb-1f55b7a93211" class="">
+</p><h2 id="7e5ed8d7-d779-4fdd-8db6-0e981090d795" class="block-color-gray_background">ExpressJS - Server Framework</h2><p id="5afa5723-03a7-461e-9a95-ba584028fc79" class=""><strong><em>Links:</em></strong></p><ul id="15ee336c-c44e-48e5-ac4b-87be9fa1267e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/SccSCuHhOw0">Express JS Crash Course</a></strong></mark></li></ul><p id="1eadefd5-019c-4a7c-9975-1143a31b7a63" class="">
+</p><h2 id="a2201621-7b2e-4164-9b08-a54c57a9e715" class="block-color-gray_background">Node.JS - JavaScript Runtime Environment</h2><p id="81f968c1-75c1-49a5-834f-1380ce1380c3" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="6c08d8e1-186c-40c6-a82d-0951af33b6d4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/TlB_eWDSMt4">Node.JS Crash Course</a></strong></mark></li></ul><ul id="a06b088a-0e5b-4209-8563-ade705039920" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/Oe421EPjeBE">NodeJS and ExpressJS</a></strong></mark><mark class="highlight-red"><strong> * </strong></mark></li></ul><p id="f5ad82fd-fe38-4a62-9b37-a7c7400fdd58" class=""><mark class="highlight-default"><strong>*</strong></mark><mark class="highlight-default">Check this tutorial for better implementation</mark></p><p id="41d37298-0fbd-4a4b-87f3-e7cbd0e43717" class="">
+</p></div></p><h2 id="82b8f4dd-0fcd-4fe4-a080-0c63b09b4c58" class="block-color-gray_background">MongoDB -  NoSQL Database</h2><p id="6fb59ce1-ac25-42f0-8119-75e12c20472f" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="5fc91151-1886-4963-b858-2208e5d54c64" class="bulleted-list"><li style="list-style-type:disc"><em><strong><mark class="highlight-red"><a href="https://learn.mongodb.com/">MongoDB University</a></mark></strong></em><em><strong> </strong></em></li></ul><ul id="9af7687b-3d2d-467e-9b23-2897c52161c2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/ofme2o29ngU">MongoDB Crash Course</a></strong></mark></li></ul><ul id="36c6201a-5ef7-4cb9-9569-7f45f5093eb8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/2QQGWYe7IDU">MongoDB Crash Course</a></strong></mark> - Different but Try this out </li></ul><ul id="c641dbaa-102c-42fe-a15a-474022307a0d" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://www.youtube.com/live/lBBtq3Oawqw?feature=share">MongoDB Full Course</a></strong></mark></li></ul><p id="02c7d58f-94d9-451e-8a9c-5d1a86fe3771" class="">
+</p></div></p><h2 id="dd73f00b-d443-40ed-a830-b5ad0f996f6d" class="block-color-gray_background">Authentication</h2><p id="6dd64565-f2d3-47bb-ac56-5cc458ee87ff" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="593e192a-fe61-4195-acfd-10ecd44ee249" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/PflTYXKfx-4">Auth0 Using VueJS</a></strong></mark></li></ul><p id="a76c7647-8c44-465b-afe8-504dce5b2093" class="">
+</p></div></p><h2 id="f144de11-a5b9-4b26-aaa8-ff118e9a4789" class="block-color-gray_background">OPTIONAL - But Recommended to Try Out!</h2><h3 id="1bb87b69-4b71-451c-8691-591bbbc25eaf" class="">Advanced Vue Framework</h3><p id="d16d0b3e-252b-466f-82ea-46eccfd9d348" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="8c30c79c-b7e0-4df6-92da-db9937db73d5" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/ltzlhAxJr74">Nuxt JS</a></strong></mark> </li></ul><p id="7f539b47-7103-45ae-bf49-f455dbb19201" class="">*Recommended after completing VueJS</p></div></p><h3 id="52e10dd3-9b6d-465e-8592-1e87fbac278d" class="">CSS Frameworks</h3><p id="40979311-c986-429a-bc8b-45fcc8172b1b" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="64f5b2cc-70ed-4533-b377-6f217ca917eb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/ft30zcMlFao">Tailwind CSS</a></strong></mark></li></ul></div></p><h3 id="638e39d3-ef08-400f-b537-96c9c390567e" class="">APIs</h3><p id="3feaac50-0c18-4b05-8cca-e5d6aa00d639" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="33d41fbb-1ed7-4a71-b2ef-f854dd24ca38" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red"><a href="https://youtu.be/l8WPWK9mS5M">Rest API</a></mark></strong></li></ul><ul id="883df2f0-21b5-43e2-a961-73aaf1ae7a79" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red"><a href="https://youtu.be/ZQL7tL2S0oQ">GraphQL</a></mark></strong> - API Query Language</li></ul><p id="10a16d00-d7c3-4baa-acaa-3cc94b465093" class="">
+</p></div></p><h3 id="3b9a2f3b-f63a-41ad-be43-5fd10779b164" class="">Deployment and Hosting</h3><p id="3fcf5564-385b-4328-aa29-9109a08474fa" class=""><em><strong>Links:</strong></em><div class="indented"><ul id="1236f6ca-e01e-4942-bdc7-7ddf9caafaeb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/ETV17M4SauU">Vercel</a></strong></mark> *</li></ul><ul id="1fe71271-e796-41be-bfe7-a99c58f6e89f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/XG8nJDWu3a0">Netlify</a></strong></mark></li></ul><ul id="891f8048-a921-419f-b8db-967a4f4b0e5a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/7wzuievFjrk">GitHub Pages</a></strong></mark></li></ul><ul id="6d9cf75f-7056-46a1-8d7c-314ec88b06a9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/MTc2CTYoszY">Cloudflare</a></strong></mark></li></ul><ul id="05692ab5-c73c-48d7-a2e0-9922918f0cad" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><strong><a href="https://youtu.be/KEK-ZxrGxMA">Linode</a></strong></mark></li></ul><p id="bea75e70-7ee9-46bb-8f44-ac563fc4caa8" class="">*Recommended</p></div></p><p id="46ef6d36-9b76-4f3a-8912-8ccf1627d1f7" class="">
+</p></div></article></body></html>

@@ -1,0 +1,725 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DevOps Tools and Things to Learn </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5a49d5f5-7dd2-4754-b854-436d3f897270" class="page sans"><header><h1 class="page-title">DevOps Tools and Things to Learn </h1><p class="page-description"></p></header><div class="page-body"><p id="7bd8b699-2440-4006-ad2c-70b0b00e3aed" class="">DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives. DevOps culture emphasizes collaboration and communication among all stakeholders involved in the software development and deployment processes, including developers, testers, and operations staff. The goal of DevOps is to automate and streamline the entire software development pipeline, from code writing to testing to deployment, to ensure that software is delivered quickly, reliably, and with high quality.</p><p id="befd7cf1-8d04-42a6-8780-2ee3038e2968" class="">
+</p><p id="870b3cb0-c065-4eb9-9a0a-8ec717e5127e" class="">There are many tools and technologies that DevOps engineers use to achieve these goals, such as configuration management tools like Ansible and Chef, containerization tools like Docker and Kubernetes, and continuous integration and deployment (CI/CD) tools like Jenkins and GitLab. DevOps engineers are also expected to have a deep understanding of cloud computing platforms like AWS and Azure, as well as scripting languages like Python and Bash.</p><p id="ce17086a-fdf6-4b46-8232-24575fcd625c" class="">To become a successful DevOps engineer, one must also have strong communication and collaboration skills, as well as the ability to work in a fast-paced and dynamic environment. It is important to stay up-to-date with the latest trends and technologies in the field, and to continuously learn and improve one&#x27;s skills through training, certifications, and hands-on experience.</p><p id="31428a02-11f1-4759-b452-8bf6e35f9366" class="">
+</p><p id="6d2a3dcd-279e-4f88-9680-342019190338" class="">
+</p><h1 id="40c20e42-d82a-46be-87e0-fc362eb874a9" class="">TOOLS :
+
+- Programming Language :</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="381470d6-ec12-4749-a973-5f50ae338f70"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Python or Go  </strong><figure id="3610474d-b8f0-438c-8780-423c0b69def8" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled.png"></figure></div></figure><p id="38285c5d-3225-44a6-8bf2-b66caa26a12d" class="">
+</p><p id="b37372d5-b4f8-441e-ad4c-2924aa4f5784" class=""><strong><em>Links : </em></strong><div class="indented"><p id="a49b293f-9cdd-4548-8909-bcb34940b565" class="">Python : 
+CS50P by Harvard University:<div class="indented"><ul id="13f4ecb3-c8c9-4eee-9844-b0cbd93f4eb4" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cs50.harvard.edu/python/2022/">CS50 Python course</a> offers a certificate upon completion of exercises and a project provided that you follow the Academic Honesty guidelines.</li></ul></div></p><p id="cd939c9d-a0fb-44db-8d77-a73006644717" class="">Python for Everybody by the University of Michigan :<div class="indented"><ul id="ced019c3-268d-40da-87a4-4d023a1eb61c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.coursera.org/learn/python?specialization=python">Programming for Everybody</a> offers fundamental knowledge in Python. If you need a certificate, it is available under the payment gateway.</li></ul></div></p><p id="d507b10c-6fdc-4ec6-9cf4-8ce055bc52af" class="">Crash Course on Python by Google :<div class="indented"><ul id="2c6e73f0-8197-43ca-b7fd-da4cc3875fdc" class="bulleted-list"><li style="list-style-type:disc"><a href="https://developers.google.com/learn/python">Crash Course on Python by Google</a> introduces basic Python concepts, including object-oriented programming (OOP) concepts.</li></ul></div></p><p id="22d6807f-5b99-4d27-b170-69185889630f" class="">Python Crash Course by CodeAcademy :<div class="indented"><ul id="c3449d9a-9aab-41de-bf2c-cc8fa6aa61aa" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.notion.so/DevOps-Tools-and-Things-to-Learn-5a49d5f57dd24754b854436d3f897270?pvs=21">Python Crash Course by CodeAcademy</a> offers both basic and OOP concepts for Python.</li></ul></div></p><p id="738a2cc0-5d32-4230-bf45-a26e0b9d4a94" class="">Python Full Course for Beginners from FreeCodeCamp :<div class="indented"><ul id="ce8a5572-3c7c-4bed-a0aa-03f954a9f9b3" class="bulleted-list"><li style="list-style-type:disc"><a href="https://youtu.be/rfscVS0vtbw">Python Full Course for Beginners</a> from FreeCodeCamp offers basic concepts with OOPs but does not provide a certificate.</li></ul><p id="4e086b2b-8042-413e-aa8f-b928b8649705" class="">
+</p><p id="fe404960-be84-496a-87c9-6a483acca3d3" class="">
+</p></div></p><p id="a18baf8b-6fae-4d19-933d-451d9212cfc3" class="">Go :<div class="indented"><p id="65ccfdc5-deb6-4340-bd7a-7569fecb22e0" class=""><strong>Programming with Google Go Specialization:</strong></p><ul id="40128220-4f1f-4250-91c4-6f9e4906bbe0" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.coursera.org/specializations/google-golang">Programming with Google Go Specialization</a> is a group of courses that can be audited for free and offers an intermediate level of the programming language.</li></ul><p id="78aed0db-ab71-404a-acbb-e55c518f1a14" class="">Go Full Tutorial by Hitesh Choudary:</p><ul id="42348fa2-d70b-4346-8958-e7b43d995785" class="bulleted-list"><li style="list-style-type:disc"><a href="https://youtube.com/playlist?list=PLRAV69dS1uWQGDQoBYMZWKjzuhCaOnBpa">Go Full Tutorial by Hitesh Choudary</a> offers a course from beginner level to advanced level.</li></ul><p id="ddfd5779-3df8-4e5c-9926-87027cde711a" class="">Learn to Go by CodeAcademy :<div class="indented"><ul id="c82b862f-81dd-4743-afd6-39fb623238c9" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.codecademy.com/learn/learn-go">https://www.codecademy.com/learn/learn-go</a> offers an intermediate level of Knowledge.</li></ul></div></p></div></p><p id="76155030-3d1e-4dbe-ad5e-0b41e3ce4222" class="">      Go Full Tutorial by FreecodeCamp :</p><p id="ca720c9f-3f4d-4ffa-bb6c-7b48fdfe1990" class="">               <a href="https://youtu.be/YS4e4q9oBaU">https://youtu.be/YS4e4q9oBaU</a><div class="indented"><p id="524a848b-6e9a-449c-8ad3-e945b6b5f47c" class="">Go Course by Tech World with Nana :<div class="indented"><ul id="7fcef995-7fa4-412d-b0d8-35e957d56ceb" class="bulleted-list"><li style="list-style-type:disc"><a href="https://youtu.be/yyUHQIec83I">https://youtu.be/yyUHQIec83</a> 
+</li></ul></div></p></div></p><p id="bbb07315-48c6-4a09-9d78-cc879731d3ab" class="">
+</p></div></p><h1 id="23e97e04-5ea8-4cc2-9570-fe780374946f" class="">- Linux with Commands :</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0bc61b97-7aec-401c-bfea-2f85303a8560"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Linux and Commands</strong>
+<figure id="37e5923d-b96e-450b-b360-11049d568274" class="image"><a href="DevOps Tools and Things to Learn 5a49d5f57dd24754b854436d3f897270/Untitled 2.png"></figure></div></figure><p id="986b6ba6-0254-481b-ac8a-c494802facec" class="">
+</p><p id="2d4e46d9-c962-4737-8cce-90edf8094e46" class=""><em>Links :</em><div class="indented"><p id="ae142d75-7ea9-4369-82f4-0a4da6eb400f" class=""><strong><strong>Introduction to Linux – Full Course for Beginners : </strong></strong><div class="indented"><p id="9153e207-9234-4539-bf71-4c318934819e" class=""> <a href="https://www.youtube.com/watch?v=sWbUDq4S6Y8"><strong><strong>Introduction to Linux</strong></strong></a><strong><strong> </strong></strong>offers many of the tools that are used every day by both Linux SysAdmins and the millions of people running Linux distributions like Ubuntu on their PCs. This course will teach you how to navigate Linux&#x27;s Graphical User Interfaces and powerful command line tool ecosystem.</p></div></p><p id="3a9f085e-b554-4ef8-9b42-269f7f37b7d7" class="">
+</p><p id="462167ce-db4f-4282-ac58-328225b351e5" class=""><strong><strong>Linux Operating System - Crash Course for Beginners : </strong></strong><div class="indented"><p id="66b50546-e3ce-4642-89f5-b85cf56b24e2" class=""> <a href="https://www.youtube.com/watch?v=sWbUDq4S6Y8">Linux Operating System - Crash Course for Beginners</a> Offers basic of the Linux Operating System in this crash course for beginners. Linux is a clone of the UNIX operating system, so understanding one is understanding the other. The goal is for you to get a full understanding of how the Linux OS works.</p><p id="b52f00ea-f12f-4f8c-9e85-ed0325307df7" class="">
+</p></div></p><p id="360a4125-9a90-48de-a076-0149fe16d76f" class=""><strong>Operating System Foundations :</strong></p><p id="9f848c03-e5b5-4f56-b464-6fd25d76b014" class=""><a href="https://www.coursera.org/learn/operating-system-foundations">Operating System Foundations </a>Audit and study only Module 3. Offers basic Working with Linux Commands.</p><p id="d4e968e9-e1e2-4583-bd1f-4d9fd677469e" class="">
+</p><p id="f97f2c18-583f-4e2f-a76e-f6039a693045" class=""><em>Documentation :</em><div class="indented"><p id="5acab4a8-1048-4cf1-84aa-027a2c9b938a" class=""><a href="https://linuxjourney.com/">Linux Journey</a> offers a variety of topics from beginner level to advanced level. 
+*<strong>Best Document.</strong></p></div></p><p id="9389e400-1e2a-48a4-99e7-b158d6a960d5" class="">
+</p></div></p><h1 id="9426a494-9627-4c7f-9423-38be645f7e26" class="">- <strong><strong>Networking Protocols :</strong></strong></h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="04b158eb-f77a-44a6-96f5-c411c43cda07"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Networking Protocols </strong>
+<figure id="77348e84-9659-4bb4-8582-1f4f6be79c7c" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%202.png"></figure></div></figure><p id="8e76ac2c-b302-4674-97bf-af362fb511d2" class="">** All Video Tutorials are Mandatory for Networks and Protocols</p><p id="ad620096-66f7-47e0-8d4f-8d206fe9a996" class=""><em>Links</em><div class="indented"><p id="455f68d3-5ac8-4c98-ac71-7fce8eb55929" class=""><mark class="highlight-red"><strong><a href="https://youtu.be/YS5Zh7KExvE">OpenSSH for Beginners: </a></strong></mark></p><p id="886afb76-174b-4980-b349-fda6d9f9ddc1" class=""><mark class="highlight-red"><strong><a href="https://youtu.be/-f4Gbk-U758">Complete Overview on SLS, TLS</a></strong></mark></p><p id="3264909b-b45e-4d72-8267-02851b77a459" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=k3rFFLmQCuY"><strong>SSH vs SSL vs TLS</strong></a></mark></p><p id="f9172a94-6c7d-4644-a552-8b191e0ffb46" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=iYM2zFP3Zn0"><strong>HTTP Crash Course</strong></a></mark></p><p id="ceff05d0-a796-4bb2-834c-e040476d9b86" class=""><strong>HTTP/3 From A To Z * Documentation</strong><div class="indented"><ul id="698be3ca-f1c9-4abd-93dd-15945aed4e5b" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red"><a href="https://www.smashingmagazine.com/2021/08/http3-core-concepts-part1/">Part 1</a></mark></strong></li></ul><ul id="ab7a0293-cc21-40aa-b651-9c51684190b8" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red"><a href="https://www.smashingmagazine.com/2021/08/http3-performance-improvements-part2/">Part 2</a></mark></strong></li></ul><ul id="cbc530c3-97f3-4f6e-bb7c-5a9c04d45684" class="bulleted-list"><li style="list-style-type:disc"><strong><mark class="highlight-red"><a href="https://www.smashingmagazine.com/2021/09/http3-practical-deployment-options-part3/">Part 3 </a></mark></strong></li></ul></div></p><p id="2bf4aa65-4106-4314-ab34-1ec6d03edf6e" class=""><strong><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=Wj0od2ag5sk">DNS or Domain Name System</a></mark></strong></p><p id="19ec2c94-9de2-4913-9f2c-3907766d325c" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=7lxgpKh_fRY"><strong>DNS Records</strong></a></mark></p></div></p><p id="71b876a4-6a49-498e-9e4b-00c50b25ace7" class="">
+</p><p id="e2d8c4f9-05e6-4241-88bb-b5071cfc5007" class="">Documentation :<div class="indented"><p id="3b8233f6-7ba4-4cb2-9cfb-ebca09975008" class=""><mark class="highlight-red"><a href="https://www.ssh.com/academy/ssh/protocol"><strong>What is SSH?</strong></a></mark><mark class="highlight-red"><strong> </strong></mark></p><p id="9358bc0e-9fc2-44f8-ab2d-c0e3894f44b9" class="">Cloudflare:<div class="indented"><ul id="1c152d11-6e66-4eb4-b0e7-9a3cfec7f810" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.cloudflare.com/learning/ssl/what-is-ssl/"><strong>Cloudflare - What is SSL?</strong></a></mark></li></ul><ul id="58b304b9-1b3a-45a3-8f0c-78733894fdbe" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.cloudflare.com/en-gb/learning/ssl/transport-layer-security-tls/"><strong>Cloudflare - What is TLS?</strong></a></mark></li></ul><ul id="0090c507-015c-4336-8f3b-c21b0eab2ad3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/hypertext-transfer-protocol-http/"><strong>What is HTTP?</strong></a></mark></li></ul><ul id="50aec9df-c289-4aae-989d-35d72d37d6fb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-https/"><strong>What is HTTPS?</strong></a></mark></li></ul><ul id="be93aca5-d479-4436-8190-5f2377728676" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://www.cloudflare.com/en-gb/learning/dns/what-is-dns/"><strong>What is DNS?</strong></a></mark></li></ul></div></p><p id="5c07e341-1d85-4cef-baaa-4f214085da67" class="">
+</p></div></p><p id="32502ed1-2960-4e64-bb36-2c3b15d0894c" class="">Comic Visualization<div class="indented"><p id="d3a61f45-7f73-479f-bb4f-d347207329b1" class=""><mark class="highlight-red"><a href="https://howhttps.works/"><strong>How HTTPS works (comic)</strong></a></mark></p><p id="19e69751-9a47-459b-a0cf-816608711a03" class=""><mark class="highlight-red"><a href="https://howdns.works/">How DNS works (comic)</a></mark></p><p id="a9eef8e9-3957-406b-b292-a892374d8bff" class="">f</p><p id="339d5496-0799-4ce5-96a5-47c86d41651e" class="">
+</p><h1 id="990606f4-0d3a-465f-a2a8-eaae5098bdf3" class="">Containerization</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c39be2ae-7844-48db-b242-921e2ae95a01"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Docker &amp; Kubernetes<strong> </strong>
+<figure id="1ef01b70-0f09-4ada-8f51-8aeb2caf0bb1" class="image">	<a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%203.png"><figure></div></figure><p id="9363311e-f73b-4774-94be-0fcb1d97f6d6" class=""><div class="indented"><p id="2fb426f4-82a2-4100-9e39-38593753727c" class=""><em>Links :</em><div class="indented"><p id="3cbb04fd-eb27-4933-8cf8-df262613fc55" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=kTp5xUtcalw"><strong><strong>Docker Containers and Kubernetes Fundamentals</strong></strong></a></mark></p><p id="af76daf8-dc4b-4a74-9c3f-81c2d36b7a37" class=""><strong><mark class="highlight-red"><a href="https://youtube.com/playlist?list=PLIhvC56v63IJlnU4k60d0oFIrsbXEivQo">Docker 101</a></mark></strong></p><p id="a8eafca7-0811-48e9-94f2-ad8a2a6799ec" class=""><strong><mark class="highlight-red"><a href="https://youtu.be/s_o8dwzRlu4">Kubernetes</a></mark></strong></p><p id="a56e281d-9d4d-4cbf-9186-cd942fee6c0b" class="">
+</p></div></p><p id="a75ca7d1-d802-437b-b0b0-0e4ff2061ac3" class="">Documentation :<div class="indented"><p id="6139d5ef-fb75-488c-9495-8b089249e621" class=""><mark class="highlight-red"><strong><a href="https://docs.docker.com/">Docker Official Document</a></strong></mark></p><p id="f1d42fea-9807-468b-91e4-07b5569bcea8" class=""><mark class="highlight-red"><strong><a href="https://kubernetes.io/docs/home/">Kubernetes</a></strong></mark></p><p id="ac6442d1-e88e-42f4-a477-f52bdf3f94d5" class="">
+</p><p id="a81cb069-b4c7-4695-a29f-f0c59a6cf9b5" class="">
+</p></div></p><h1 id="76123e87-b4db-497b-b5e8-92a9e8be3913" class="">Version Control</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="87499bd3-974f-4084-9726-c602b0debc03"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Git <strong> </strong>
+<figure id="e39780ce-3f44-4487-9a9b-c2f8cfe1f724" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%204.png"></figure></div></figure><p id="77bd6c28-ce61-4560-81a9-6da3c9012808" class="">Links :<div class="indented"><p id="b022eacb-ac24-427b-b2e0-1c9e99da96ce" class=""><strong><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc">Git &amp; GitHub Crash Course For Beginners</a></mark></strong></p><p id="e823d264-3fc0-4341-8baf-c3bf296b0718" class="">
+</p></div></p><p id="4a2077d1-f45b-4c82-936f-d6d3d4b64dee" class="">Documentation :<div class="indented"><p id="9198ba0e-f71f-42b4-b8e4-cc8d744e0a4a" class=""><strong><mark class="highlight-red"><a href="https://git-scm.com/doc">Git Official Documentation</a></mark></strong></p><p id="7f77fca7-310a-4e3e-a874-c9ff18376824" class="">
+</p></div></p><p id="11643a1f-5a6c-41e3-ba47-8cc2a28a0aa8" class="">Cheat Sheets  :<div class="indented"><p id="91009aca-9ec7-42b1-a4e8-be9c0fc2051b" class=""><mark class="highlight-red"><strong><a href="https://education.github.com/git-cheat-sheet-education.pdf">Provided By Github</a></strong></mark></p><p id="319d14d4-69d1-4491-a64f-611e33f23bf3" class=""><mark class="highlight-red"><strong><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Provided By Atlassian</a></strong></mark></p><p id="26f9ae5c-389c-4814-8fa3-51406b4dd738" class=""><mark class="highlight-red"><strong><a href="https://about.gitlab.com/images/press/git-cheat-sheet.pdf">Provided By Gitlab</a></strong></mark></p></div></p><p id="4e6805a9-6b8a-40f5-924f-4be18ecf275d" class="">
+</p></div></p><p id="70ad96e2-459f-4f21-b365-4d1d36566223" class="">
+</p><h1 id="cfc602cf-4645-43f9-a357-c68b92b3a0d0" class="">- Cloud Technologies:</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7e69632b-a2c5-4c5b-a605-8689f6a4e71d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">AWS Preferred
+<figure id="72d95181-dc3f-4e9b-8ea2-6edfe581ec0d" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%205.png"></figure></div></figure><p id="a68f9bd8-b6b7-4b1b-8e87-a2e8d68afecf" class="">Links: <div class="indented"><p id="1e2e6a40-d61e-40d2-9fdc-2995edf5db7f" class=""><mark class="highlight-red"><a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials"><strong>Cloud Practitioner Essentials</strong></a></mark></p><p id="3a3e7370-085f-492f-9c26-3c82652b01a7" class=""><mark class="highlight-red"><a href="https://www.simplilearn.com/tutorials/aws-tutorial/what-is-aws"><strong>AWS Guide by Simplilearn</strong></a></mark></p><p id="ac5a0930-fdf9-41b9-8603-a7da20c6d499" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=k1RI5locZE4&amp;t=129s"><strong>AWS Tutorial for Beginners</strong></a></mark></p><p id="125fd973-795e-4545-8fd8-ba6a7392de42" class=""><mark class="highlight-red"><a href="https://www.coursera.org/learn/aws-cloud-technical-essentials?specialization=aws-devops"><strong>AWS Course for Beginners</strong></a></mark></p><p id="8ea4e7c7-6540-4bb9-b744-6e149f0fbe19" class=""><mark class="highlight-red"><a href="https://www.coursera.org/specializations/aws-devops?#courses"><strong>DevOps on AWS Course</strong></a></mark></p><p id="9ca2e9ea-b396-456b-8cc3-80f15817f39e" class=""><mark class="highlight-red"><a href="https://youtu.be/SOTamWNgDKc"><strong>AWS Practitioner</strong></a></mark></p></div></p><p id="67beb339-5956-41e7-b35c-5a8907ecff03" class="">
+</p><p id="7b4079cb-db7b-41e7-8fb4-97f6e4657c32" class="">Documentation :<div class="indented"><ul id="0a45ddf2-2889-4c7c-93b7-072bed2e380e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://docs.aws.amazon.com/"><strong>AWS Documentation</strong></a></mark></li></ul><ul id="01186b03-36a9-4218-8473-7a878eaf64d1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://cs.fyi/guide/how-to-learn-aws/"><strong>How to learn AWS</strong></a></mark></li></ul><ul id="1de831bb-59c1-4618-8891-97e92b030209" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><a href="https://d1.awsstatic.com/training-and-certification/ramp-up_guides/Ramp-Up_Guide_CloudPractitioner.pdf"><strong>AWS Ramp-Up Guide</strong></a></mark></li></ul></div></p><p id="b1ed55f6-7f7e-4865-b64f-31a32c200de1" class="">
+</p><h1 id="bec86a4d-16f8-4dd3-91fd-424aa7957cd3" class="">Infrastructure as Code :</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ed3a7f86-d264-433d-b579-22285e0848f9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Teraform
+<figure id="3bcdcc3a-535c-4fac-8121-e43143931a3b" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%206.png"></figure></div></figure><p id="8f54fa57-e079-4993-b6f4-b22ea79161d9" class="">Links :<div class="indented"><p id="7bd6b043-e981-4cfe-9eb7-78319233b8d9" class=""><a href="https://www.youtube.com/watch?v=SLB_c_ayRMo&amp;t=10s"><strong><strong>Terraform Course - Automate your AWS cloud infrastructure</strong></strong></a></p><p id="7727a66c-200e-4f73-ab24-083e3c00693f" class=""><a href="https://www.youtube.com/watch?v=V4waklkBC38">HashiCorp Terraform Associate Certification Course</a></p><p id="e5ac3aa2-50b7-41e3-b353-66b18c7c70ad" class=""><a href="https://developer.hashicorp.com/terraform/tutorials">Tutorials Provided by Hashicorp</a></p><p id="dca44155-ed0f-4411-8db2-395e29b0cca3" class=""><a href="https://youtu.be/D21TOUyx0Fc"><strong><strong>use AWS Cloud Development Kit (CDK) for Terraform</strong></strong></a></p><p id="d7b89155-a289-4789-a72d-b55610a64b0f" class="">
+</p></div></p><p id="031038db-9d67-4c3f-a3ce-012643f01d99" class="">Documentation :<div class="indented"><p id="6c446b37-6d5a-4df0-8d30-40f9125c302e" class=""><mark class="highlight-red"><a href="https://www.terraform.io/docs"><strong>Terraform Documentation</strong></a></mark></p><p id="6f7419ff-293a-450e-8857-ca6f7aeff585" class=""><mark class="highlight-red"><a href="https://www.terraform.io/cdktf"><strong>Terraform CDK Website</strong></a></mark></p><p id="d473d335-f4f9-4e34-9905-092075af6ad4" class=""><mark class="highlight-red"><a href="https://www.terraform.io/cdktf/concepts/cdktf-architecture"><strong>What is the CDKTF?</strong></a></mark></p><p id="a4df4727-c4b7-4940-84c0-44332134b46a" class=""><mark class="highlight-red"><a href="https://learn.hashicorp.com/tutorials/terraform/cdktf-install?in=terraform/cdktf"><strong>CDKTF Getting Started Guide</strong></a></mark></p><p id="361e2e10-5e51-47f2-aadf-611995404356" class=""><mark class="highlight-red"><a href="https://www.terraform.io/cdktf/examples"><strong>CDKTF Examples</strong></a></mark></p><p id="30f7858f-ba6c-4ee9-9021-c02b9ce666f1" class=""><mark class="highlight-red"><a href="https://thenewstack.io/how-to-scale-your-terraform-infrastructure/"><strong>How to Scale Your Terraform Infrastructure</strong></a></mark></p><p id="9e6ef3e0-ae5a-4275-bd5b-ace2894c8ac8" class="">
+</p></div></p><p id="83768b43-dde7-487e-bd0b-5e6788fbd42d" class="">
+</p><h1 id="d770583f-b062-4c24-af86-9480a0bd3461" class="">Configuration Management :</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="50f1e8cc-6086-44db-9e4c-8ae1db01578e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong><strong>Ansible</strong></strong>
+<figure id="bedf503c-ddf1-44da-bf3c-5eb0fd1df74f" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%207.png"></a></figure></div></figure><p id="91a7ba48-1e62-4c36-bf11-c966994ddd26" class="">Links :<div class="indented"><p id="c8ca8054-f626-4ad6-85bc-c504623c6252" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=9Ua2b06oAr4"><strong>Ansible Full Course for Beginners</strong></a></mark></p></div></p><p id="688f2f2f-f19c-43c0-bb7f-c449efb0279c" class="">
+</p><p id="33c35725-2d49-4ca7-9d7a-abe81e999588" class="">Documentation :<div class="indented"><p id="6bfef94a-8ebc-407e-ab28-17b64f1630b9" class=""><mark class="highlight-red"><a href="https://docs.ansible.com/"><strong>Ansible Official Documentation</strong></a></mark></p><p id="e6b21b2d-c07d-49c2-be01-ee3c0035b539" class=""><mark class="highlight-red"><a href="https://www.ansible.com/resources/get-started"><strong>Ansible Getting Started Guide</strong></a></mark></p></div></p><p id="3895f318-6677-4c50-b6d9-14efd98a4eae" class="">
+</p><h1 id="e0c440d8-1c36-421b-81d1-aeb79fe7d2a3" class="">CI &amp; CD :</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="80079eed-cda2-43be-8577-c1d216aa3a93"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Git Ops or Gitlab for Ops
+<figure id="aae321b8-f01b-4a79-8687-0125047e78c8" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%208.png"></figure></div></figure><p id="78232e24-cdfc-45f7-befb-e9cfde5464d6" class="">Links :<div class="indented"><p id="b9341a24-d041-4bfc-a0d4-b1556820c53a" class=""><mark class="highlight-red"><strong><a href="https://youtu.be/R8_veQiYBjI">Git Action</a></strong></mark><mark class="highlight-red"><strong>
+</strong></mark><mark class="highlight-red"><strong><a href="https://youtu.be/qP8kir2GUgo">Gitlab for Ops</a></strong></mark></p><p id="b23fbf67-502d-45ca-b18f-228cc60e208f" class=""><mark class="highlight-red"><a href="https://youtu.be/cP0I9w2coGU"><strong>GitHub Actions - Supercharge your GitHub Flow</strong></a></mark></p><p id="4e09a39f-8778-4df0-9227-d3357d15c3db" class=""><mark class="highlight-red"><a href="https://www.youtube.com/watch?v=nyKZTKQS_EQ"><strong>Automate your Workflow with GitHub Actions</strong></a></mark></p></div></p><p id="aa987ba6-9d15-410d-87b0-ad0495737fe7" class="">
+</p><p id="fc794e8b-37d6-44dc-88c5-f3636a2004cb" class="">Documentation :<div class="indented"><p id="1e746bd8-f4fd-446a-9e36-1b916dbb1b1c" class=""><mark class="highlight-red"><a href="https://docs.github.com/en/actions"><strong>GitHub Actions Documentation</strong></a></mark></p><p id="cf0d3309-aeca-474f-8090-1bf31f584ccd" class=""><mark class="highlight-red"><a href="https://docs.github.com/en/actions/learn-github-actions"><strong>Learn GitHub Actions</strong></a></mark></p><p id="6992d0ec-6c9f-404b-924b-de293304b57e" class="">
+</p></div></p><p id="82e2e592-ba34-4fdf-b142-302621ee6d2a" class="">
+</p><h1 id="51e8d5f1-d978-48a1-96e9-1cd952f7b9bd" class="">Web Server</h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="128920ce-8647-453d-b931-b339ce457866"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong><strong>Nginx</strong></strong>
+<figure id="d6752b74-e97a-40f6-af1d-1f847d68a0b1" class="image"><a href="DevOps%20Tools%20and%20Things%20to%20Learn%205a49d5f57dd24754b854436d3f897270/Untitled%209.png"><figure></div></figure><p id="d7dcae99-578a-46f4-bb81-9b29a83d0c28" class="">Links :<div class="indented"><p id="09f42fc1-3ac3-43c6-954a-03aaf51dc3cd" class=""><strong><mark class="highlight-red"><a href="https://youtu.be/1ndlRiaYiWQ">NGINX Course</a></mark></strong></p></div></p><p id="d84d1f39-6c08-4895-a253-a786e51b5913" class="">
+</p><p id="a989dbbd-d773-4c43-b61f-99ce725d4757" class="">Documentation :<div class="indented"><p id="9ec06bf2-5686-4e8c-8ecb-26735ab0c211" class=""><strong><mark class="highlight-red"><a href="https://nginx.org/en/docs/">Official Documentation</a></mark></strong></p><p id="d450a3bf-abc5-44a7-a234-ca47869dd83e" class="">
+</p></div></p></div></p></div></article></body></html>

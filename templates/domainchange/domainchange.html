@@ -1,0 +1,67 @@
+{% extends "quiz/navbar.html" %}
+<head>
+  <!-- Other head content -->
+  <!-- Include your additional CSS here -->
+  {% block additional_css %}
+  <style>
+    /* Custom styles for the card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* Display four cards in a row */
+      gap: 28px; /* Adjust the gap value as needed */
+      padding: 24px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 34px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Center-align the h1 heading */
+    .center-heading {
+      text-align: center;
+    }
+
+    /* Customize font style */
+    .custom-font {
+      font-family: "Arial", sans-serif; /* Specify your custom font here */
+      font-size: 38px; /* Adjust the font size as needed */
+      font-weight: bold; /* Adjust the font weight as needed */
+      color: #333; /* Adjust the font color as needed */
+    }
+
+    /* Your existing responsive queries */
+  </style>
+  {% endblock %}
+  <!-- Other head content -->
+</head>
+
+<body>
+{% block content %}
+
+<div class="p-5 m-5">
+  <br>
+  <!-- Center-aligned and styled h1 heading -->
+  <h1 class="center-heading custom-font">Domain Change</h1>
+  <section class="card-grid">
+    {% for domain in domains %}
+    <div class="card">
+      <img src="{{ domain.image.url }}" alt="{{ domain.name }}" />
+      <h2>{{ domain.name }}</h2>
+      <p class="description">{{ domain.description }}</p>
+      <a href="/domainchange/{{ domain.links }}" class="btn btn-primary"
+        >Detail</a
+      >
+    </div>
+    {% endfor %}
+  </section>
+</div>
+</body>
+{% endblock %}

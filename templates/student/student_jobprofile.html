@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 95%;
+            padding: 12px; /* Increased padding */
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 30px; /* Adjust padding to center button */
+            font-size: 18px; /* Increase font size */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        p {
+            
+            padding-top: 10px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            
+        }
+        .text-success {
+            color: green;
+        }
+        .text-danger {
+            color: red;
+        }
+        label.required::after {
+            content: " *";
+            color: red;
+        }
+
+        
+        
+    </style>
+</head>
+<body style="background-color:lightblue" >
+    <h1>User Profile</h1>
+    
+    <form  id="inputForm" >
+        <label class="required" for="userRole" required>Your Job Role:</label>
+        <input type="text" id="userRole" name="userRole" required><br>
+
+        <button type="button" onclick="generateProfile()">Generate Profile</button>
+    </form>
+    
+    <p id="resultProfile"></p>
+    <p id="result"></p>
+
+</br>
+<div id="GlassDoor-button-container">
+    <!-- The LinkedIn iframe will be inserted here -->
+</div>
+</br>
+<div id="LinkedIn-button-container">
+    <!-- The LinkedIn iframe will be inserted here -->
+</div>
+</br>
+<div id="Indeed-button-container">
+</div>
+</br>
+    <script type="text/javascript">
+      
+      var profileParagraph;
+        function generateProfile() {
+            var userRole = document.getElementById("userRole").value;
+            profileParagraph = `${userRole}`
+            
+            fetch('http://127.0.0.1:8000/models/student_profile_genetator_api', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json', // Specify the content type as JSON
+              },
+              body: JSON.stringify({ profileData: profileParagraph }), // Send the data in JSON format
+          })
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById("resultProfile").textContent = data.message;
+              document.getElementById("result").textContent = "Your Predicted Job Category: "+data.predicted_cata;
+              document.getElementById("resultProfile").classList.add("text-success");
+              console.log('Success:', data);
+              generateLinkedInButton(data.predicted_cata);
+              generateGlassDoorButton(data.predicted_cata);
+              generateIndeedButton(data.predicted_cata);
+          })
+          .catch(error => {
+            document.getElementById("resultProfile").textContent = error;
+            document.getElementById("resultProfile").classList.add("text-danger");
+
+              console.error('Error:', error);
+          });
+          }
+
+          function generateGlassDoorButton(placeholder) {
+            var baseLink = "https://www.glassdoor.com/Job/";
+            const link = baseLink + placeholder + "-jobs-SRCH_KO0,13.htm";
+
+            const linkButton = document.createElement('a');
+            linkButton.href = link
+            linkButton.textContent = 'Click Here to Check Listings on GlassDoor ';
+            linkButton.style.display = "block";
+            linkButton.style.margin = "0 auto";
+            linkButton.style.backgroundColor = "#007bff";
+            linkButton.style.color = "#fff";
+            linkButton.style.padding = "20px 30px";
+            linkButton.style.fontSize = "18px";
+            linkButton.style.border = "none";
+            linkButton.style.borderRadius = "5px";
+            linkButton.style.cursor = "pointer";
+            var container = document.getElementById("GlassDoor-button-container");
+            container.innerHTML = '';
+            container.appendChild(linkButton);
+          }
+          function generateLinkedInButton(placeholder) {
+            var baseLink = "https://linkedin.com/jobs/search/?keywords=";
+            const link = baseLink + placeholder + "&refresh=true";
+
+            const linkButton = document.createElement('a');
+            linkButton.href = link
+            linkButton.textContent = 'Click Here to Check Listings on LinkedIn ';
+            linkButton.style.display = "block";
+            linkButton.style.margin = "0 auto";
+            linkButton.style.backgroundColor = "#007bff";
+            linkButton.style.color = "#fff";
+            linkButton.style.padding = "20px 30px";
+            linkButton.style.fontSize = "18px";
+            linkButton.style.border = "none";
+            linkButton.style.borderRadius = "5px";
+            linkButton.style.cursor = "pointer";
+            var container = document.getElementById("LinkedIn-button-container");
+            container.innerHTML = '';
+            container.appendChild(linkButton);
+          }
+          function generateIndeedButton(placeholder) {
+            var baseLink = "https://in.indeed.com/jobs?q=";
+            const link = baseLink + placeholder;
+
+            const linkButton = document.createElement('a');
+            linkButton.href = link
+            linkButton.textContent = 'Click Here to Check Listings on Indeed ';
+            linkButton.style.display = "block";
+            linkButton.style.margin = "0 auto";
+            linkButton.style.backgroundColor = "#007bff";
+            linkButton.style.color = "#fff";
+            linkButton.style.padding = "20px 30px";
+            linkButton.style.fontSize = "18px";
+            linkButton.style.border = "none";
+            linkButton.style.borderRadius = "5px";
+            linkButton.style.cursor = "pointer";
+            var container = document.getElementById("Indeed-button-container");
+            container.innerHTML = '';
+            container.appendChild(linkButton);
+          }
+        
+        console.log(profileParagraph);
+        
+       
+    </script> 
+</body>
+</html>
