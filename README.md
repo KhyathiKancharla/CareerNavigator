@@ -32,7 +32,7 @@ py manage.py createsuperuser
 - Can Give Exam Any Time, There Is No Limit On Number Of Attempt.
 - Can View Marks Of Each Attempt Of Each Exam.
 - Question Pattern Is MCQ With 4 Options And 1 Correct Answer.
----
+- get few roles suggested from the users skills
 
 ## HOW TO RUN THIS PROJECT
 - Install Python(3.7.6) (Dont Forget to Tick Add to Path while installing Python)
